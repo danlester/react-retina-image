@@ -31,15 +31,15 @@ module.exports = class RetinaImage extends React.Component
     @state = @wrangleProps()
     @imgref = React.createRef()
 
-  componentWillReceiveProps: (nextProps) ->
+  componentDidUpdate: (prevProps, prevState) ->
     isEqual = true
-    if Array.isArray(@props.src) and Array.isArray(nextProps.src)
-      isEqual = arrayEqual(@props.src, nextProps.src)
+    if Array.isArray(@props.src) and Array.isArray(prevProps.src)
+      isEqual = arrayEqual(@props.src, prevProps.src)
     else
-      isEqual = @props.src is nextProps.src
+      isEqual = @props.src is prevProps.src
 
     unless isEqual
-      @setState assign @wrangleProps(nextProps), {
+      @setState assign @wrangleProps(@props), {
         width: null
         height: null
         imgLoaded: null

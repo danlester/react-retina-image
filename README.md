@@ -3,6 +3,8 @@ react-retina-image
 
 React component for serving high-resolution images to devices with retina displays
 
+This is a fork of the original designed to work with React 16+ (danlester)
+
 ## Demo
 http://kyleamathews.github.io/react-retina-image/
 

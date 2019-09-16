@@ -1,10 +1,10 @@
 {
   "name": "react-retina-image-dl",
   "description": "React component for serving high-resolution images to devices with retina displays",
-  "version": "2.0.6",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "version": "2.0.7",
+  "author": "Dan Lester <dan@ideonate.com>",
   "bugs": {
-    "url": "https://github.com/KyleAMathews/react-retina-image/issues"
+    "url": "https://github.com/danlester/react-retina-image/issues"
   },
   "dependencies": {
     "array-equal": "^1.0.0",
@@ -33,7 +33,7 @@
   "directories": {
     "example": "examples"
   },
-  "homepage": "https://github.com/KyleAMathews/react-retina-image",
+  "homepage": "https://github.com/danlester/react-retina-image",
   "keywords": [
     "image",
     "react",
@@ -44,7 +44,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/KyleAMathews/react-retina-image.git"
+    "url": "https://github.com/danlester/react-retina-image.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

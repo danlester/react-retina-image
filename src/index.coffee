@@ -29,6 +29,7 @@ module.exports = class RetinaImage extends React.Component
   constructor: (props) ->
     super props
     @state = @wrangleProps()
+    @imgref = React.createRef()
 
   componentWillReceiveProps: (nextProps) ->
     isEqual = true
@@ -78,7 +79,7 @@ module.exports = class RetinaImage extends React.Component
 
     crel("img", Object.assign({}, \
       imgProps, { \
-      "ref": "img"}))
+      "ref": @imgref}))
 
   # src can be a href or an array of hrefs.
   wrangleProps: (props=@props) ->
@@ -117,7 +118,7 @@ module.exports = class RetinaImage extends React.Component
   # this module mounts.
   # http://stackoverflow.com/a/1977898
   checkLoaded: ->
-    el = @refs.img
+    el = @imgref
 
     unless el.complete
       return false
@@ -140,8 +141,8 @@ module.exports = class RetinaImage extends React.Component
 
     if @props.forceOriginalDimensions
       @setState {
-        width: @refs.img.clientWidth
-        height: @refs.img.clientHeight
+        width: @imgref.clientWidth
+        height: @imgref.clientHeight
       }
 
     @setState imgLoaded: true

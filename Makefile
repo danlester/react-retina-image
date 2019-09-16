@@ -10,12 +10,12 @@ release-major:
 	@$(call release,major)
 
 build:
-	@$(BIN)/cjsx -cb -o dist src/index.cjsx
+	@$(BIN)/coffee -c -o dist src/index.coffee
 	@$(BIN)/webpack
 
 publish:
 	git push --tags origin HEAD:master
-	@$(BIN)/cjsx -cb -o dist src/index.cjsx
+	@$(BIN)/coffee -c -o dist src/index.coffee
 	npm publish
 
 publish-gh-pages:

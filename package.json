@@ -1,7 +1,7 @@
 {
   "name": "react-retina-image-dl",
   "description": "React component for serving high-resolution images to devices with retina displays",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "author": "Dan Lester <dan@ideonate.com>",
   "bugs": {
     "url": "https://github.com/danlester/react-retina-image/issues"

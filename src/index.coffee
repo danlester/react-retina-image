@@ -8,6 +8,7 @@ assign = require 'object-assign'
 arrayEqual = require 'array-equal'
 
 module.exports = class RetinaImage extends React.Component
+
   @propTypes:
     src: PropTypes.oneOfType([
       PropTypes.string
@@ -27,6 +28,7 @@ module.exports = class RetinaImage extends React.Component
     onError: ->
 
   constructor: (props) ->
+    @_isMounted = false
     super props
     @state = @wrangleProps()
     @imgref = React.createRef()
@@ -48,8 +50,12 @@ module.exports = class RetinaImage extends React.Component
       }
 
   componentDidMount: ->
+    @_isMounted = true
     @checkForRetina()
     @checkLoaded()
+
+  componentWillUnmount: ->
+    @_isMounted = false
 
   componentDidUpdate: ->
     @checkForRetina()
@@ -95,7 +101,7 @@ module.exports = class RetinaImage extends React.Component
       }
 
   checkForRetina: ->
-    if @state.retinaCheckComplete then return
+    if @state.retinaCheckComplete or !@_isMounted then return
 
     if isRetina() and @props.checkIfRetinaImgExists
       imageExists @getRetinaPath(), (exists) =>
@@ -131,6 +137,8 @@ module.exports = class RetinaImage extends React.Component
 
 
   handleOnLoad: (e) =>
+    if !@_isMounted then return
+
     # Customers of component might care when the image loads.
     if @props.onLoad?
       @props.onLoad(e)
